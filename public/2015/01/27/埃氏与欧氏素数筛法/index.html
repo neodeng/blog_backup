@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>埃氏与欧氏素数筛法 | 我们的目标是星辰大海</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="筛选法是给出N前的素数及其个数的快速算法，主要有Eratosthenes(埃氏筛法)和Euler(欧氏筛法)。埃氏筛法是的原理是，任何一个合数都是由质因数相乘得到的，所以可以将前sqrt(N)个数的倍数都筛选掉，这样剩下来的就是素数,代码如下,这里内循环从i*i开始，效率更高，原因是i*(i-1)在i-1的时候已经筛选掉了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="埃氏与欧氏素数筛法">
+<meta property="og:url" content="https://github.com/neodeng/2015/01/27/埃氏与欧氏素数筛法/">
+<meta property="og:site_name" content="我们的目标是星辰大海">
+<meta property="og:description" content="筛选法是给出N前的素数及其个数的快速算法，主要有Eratosthenes(埃氏筛法)和Euler(欧氏筛法)。埃氏筛法是的原理是，任何一个合数都是由质因数相乘得到的，所以可以将前sqrt(N)个数的倍数都筛选掉，这样剩下来的就是素数,代码如下,这里内循环从i*i开始，效率更高，原因是i*(i-1)在i-1的时候已经筛选掉了。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="埃氏与欧氏素数筛法">
+<meta name="twitter:description" content="筛选法是给出N前的素数及其个数的快速算法，主要有Eratosthenes(埃氏筛法)和Euler(欧氏筛法)。埃氏筛法是的原理是，任何一个合数都是由质因数相乘得到的，所以可以将前sqrt(N)个数的倍数都筛选掉，这样剩下来的就是素数,代码如下,这里内循环从i*i开始，效率更高，原因是i*(i-1)在i-1的时候已经筛选掉了。">
+
+  
+    <link rel="alternative" href="/atom.xml" title="我们的目标是星辰大海" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="/dyq.jpg">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Neo Deng</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">相爱	不如相知</p>
+		
+
+		
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+		
+
+		<div class="switch-area">
+			<section class="first-part">
+				<nav class="header-menu">
+					<ul>
+					
+						<li><a href="/">主页</a></li>
+			        
+						<li><a href="/archives">所有文章</a></li>
+			        
+						<li><a href="/tags/随笔">随笔</a></li>
+			        
+					</ul>
+				</nav>
+				<nav class="header-nav">
+					<div class="social">
+						
+							<a class="github" target="_blank" href="https://github.com/neodeng" title="github">github</a>
+				        
+							<a class="weibo" target="_blank" href="http://weibo.com/u/5323510820" title="weibo">weibo</a>
+				        
+							<a class="google" target="_blank" href="https://plus.google.com/u/0/107158690205371195391" title="google">google</a>
+				        
+					</div>
+				</nav>
+			</section>
+			
+			
+			<section class="second-part">
+				<div class="widget tagcloud">
+					<a href="/tags/system/" style="font-size: 10.00px;">system</a><a href="/tags/web/" style="font-size: 10.00px;">web</a><a href="/tags/算法/" style="font-size: 20.00px;">算法</a><a href="/tags/随笔/" style="font-size: 10.00px;">随笔</a>
+				</div>
+			</section>
+			
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/dyq.jpg">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">Neo Deng</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">相爱	不如相知</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/neodeng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5323510820" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/u/0/107158690205371195391" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-埃氏与欧氏素数筛法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/27/埃氏与欧氏素数筛法/" class="article-date">
+  	<time datetime="2015-01-27T08:56:05.000Z" itemprop="datePublished">Jan 27 2015</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      埃氏与欧氏素数筛法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>筛选法是给出N前的素数及其个数的快速算法，主要有<b>Eratosthenes(埃氏筛法)</b>和<b>Euler(欧氏筛法)</b>。<br>埃氏筛法是的原理是，任何一个合数都是由质因数相乘得到的，所以可以将前sqrt(N)个数的倍数都筛选掉，这样剩下来的就是素数,代码如下,这里内循环从i*i开始，效率更高，原因是i*(i-1)在i-1的时候已经筛选掉了。<br><a id="more"></a><br>代码如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*Comparison of Eratosthenes and Euler seive of prime numbers.*/</span></div><div class="line"> <span class="preprocessor">#<span class="keyword">include</span> "stdio.h"</span></div><div class="line"> <span class="preprocessor">#<span class="keyword">include</span> "time.h"</span></div><div class="line"> <span class="preprocessor">#<span class="keyword">include</span> "string.h"</span></div><div class="line"> <span class="preprocessor">#<span class="keyword">define</span> N 10000000</span></div><div class="line"> <span class="comment">/* check: prime=0;not prime=1;</span></div><div class="line">    primes: store primes;</div><div class="line">	cnt: the number of primes. */</div><div class="line"> <span class="keyword">int</span> check[N];</div><div class="line"> <span class="keyword">int</span> primes[N];</div><div class="line"> <span class="keyword">int</span> cnt; </div><div class="line"> <span class="keyword">int</span> Eratosthenes(<span class="keyword">int</span> n);</div><div class="line"> <span class="keyword">int</span> Euler(<span class="keyword">int</span> n);</div><div class="line"> </div><div class="line"> main(){</div><div class="line">	<span class="keyword">double</span> st, ed, runtime;</div><div class="line">	st=clock();</div><div class="line">	<span class="built_in">memset</span>(check,<span class="number">0</span>,N);<span class="built_in">memset</span>(primes,<span class="number">0</span>,N);cnt=<span class="number">0</span>;</div><div class="line">	cnt=Eratosthenes(N);</div><div class="line">	ed=clock();</div><div class="line">	runtime=(ed-st)/CLOCKS_PER_SEC;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Eratosthenes:\t\t%10d\t\t%.10f\n"</span>,cnt,runtime);</div><div class="line">	st=clock();</div><div class="line">	<span class="built_in">memset</span>(check,<span class="number">0</span>,N);<span class="built_in">memset</span>(primes,<span class="number">0</span>,N);cnt=<span class="number">0</span>;</div><div class="line">	cnt=Euler(N);</div><div class="line">	ed=clock();</div><div class="line">	runtime=(ed-st)/CLOCKS_PER_SEC;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Euler:\t\t\t\%10d\t\t%.10f\n"</span>,cnt,runtime);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"> }</div><div class="line"> </div><div class="line"> <span class="keyword">int</span> Eratosthenes(<span class="keyword">int</span> n){</div><div class="line">	<span class="keyword">int</span> i,j;</div><div class="line">	check[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	check[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (i=<span class="number">2</span>;i&lt;n;i++){</div><div class="line">		<span class="keyword">if</span>(!check[i])</div><div class="line">			primes[cnt++]=i;</div><div class="line">		<span class="keyword">for</span>(j=i*i;j&lt;n;j+=i)</div><div class="line">			check[j]=<span class="number">1</span>;</div><div class="line">	}</div><div class="line">	<span class="keyword">return</span> cnt;</div><div class="line"> }</div><div class="line"> </div><div class="line"> <span class="keyword">int</span> Euler(<span class="keyword">int</span> n){</div><div class="line">	<span class="keyword">int</span> i,j;</div><div class="line">	check[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	check[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (i=<span class="number">2</span>;i&lt;n;i++){</div><div class="line">		<span class="keyword">if</span>(!check[i])</div><div class="line">			primes[cnt++]=i;</div><div class="line">		<span class="keyword">for</span> (j=<span class="number">0</span>;i*primes[j]&lt;n && j&lt;cnt;j++){</div><div class="line">			check[i*primes[j]]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%primes[j]==<span class="number">0</span>)</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		}</div><div class="line">	}</div><div class="line">	<span class="keyword">return</span> cnt;</div><div class="line"> }</div></pre></td></tr></table></figure>
+
+<p>埃氏筛法的时间复杂度为O(NloglogN)，具体证明可见Knuth大神的<a href="">《The Art of programming Vol 2》</a>当然，埃氏筛法的效率仍然可以进一步优化，因为同一个合数可能被筛选了不止一次。比如18=2<em>9=3</em>6，在i=2和i=3时都筛选了一次，所以如果每个合数都只是被其最小的质因数筛选掉，则其时间复杂度可优化为近似线性的，因此欧氏筛法也称为线性筛选法。<br>欧氏筛法的证明:如果一个合数i=p<em>m=p’</em>m’,其中p和p’是i的两个不同的质因数，且p是最小的质因数，从代码上来看，i是不可能被p’筛掉的，因为p&lt;p’,所以m&gt;m’,若i被p’筛选掉，则一定是在m’的时候，而m’无疑是p的倍数，所以在m’的时候，循环到p的时候就结束了(这也是欧氏筛法最关键的一步)，不会循环到p’,所以i只会被其最小的质因数p筛掉一次。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/01/23/动态规划：LIS问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态规划：LIS问题</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="埃氏与欧氏素数筛法" data-title="埃氏与欧氏素数筛法" data-url="https://github.com/neodeng/2015/01/27/埃氏与欧氏素数筛法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"neodeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> </br>
+		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+    	</div>
+      <!--	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

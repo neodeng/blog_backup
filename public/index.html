@@ -82,7 +82,7 @@
 			
 			<section class="second-part">
 				<div class="widget tagcloud">
-					<a href="/tags/system/" style="font-size: NaNpx;">system</a><a href="/tags/web/" style="font-size: NaNpx;">web</a><a href="/tags/算法/" style="font-size: NaNpx;">算法</a><a href="/tags/随笔/" style="font-size: NaNpx;">随笔</a>
+					<a href="/tags/system/" style="font-size: 10.00px;">system</a><a href="/tags/web/" style="font-size: 10.00px;">web</a><a href="/tags/算法/" style="font-size: 20.00px;">算法</a><a href="/tags/随笔/" style="font-size: 10.00px;">随笔</a>
 				</div>
 			</section>
 			
@@ -132,6 +132,57 @@
 	</div>
 </nav>
       
+  
+    <article id="post-埃氏与欧氏素数筛法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/27/埃氏与欧氏素数筛法/" class="article-date">
+  	<time datetime="2015-01-27T08:56:05.000Z" itemprop="datePublished">Jan 27 2015</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/27/埃氏与欧氏素数筛法/">埃氏与欧氏素数筛法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>筛选法是给出N前的素数及其个数的快速算法，主要有<b>Eratosthenes(埃氏筛法)</b>和<b>Euler(欧氏筛法)</b>。<br>埃氏筛法是的原理是，任何一个合数都是由质因数相乘得到的，所以可以将前sqrt(N)个数的倍数都筛选掉，这样剩下来的就是素数,代码如下,这里内循环从i*i开始，效率更高，原因是i*(i-1)在i-1的时候已经筛选掉了。<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/27/埃氏与欧氏素数筛法/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-动态规划：LIS问题" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -295,7 +346,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-right">
-    		&copy; 2015 Neo Deng </br></br>
+    		&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> </br>
 		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
     	</div>
       <!--	<div class="footer-right">
