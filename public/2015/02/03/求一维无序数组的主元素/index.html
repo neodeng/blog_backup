@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>求一维无序数组的主元素 | 我们的目标是星辰大海</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题：对于一维无序数组A[N]，若存在元素A[i]出现的次数超过N/2，则称A[i]为数组A的主元素。给出算法求出数组A是否存在主元素，并给出主元素。解法：解法1：暴力搜索，时间复杂度为O(N2);解法2：采用随机搜索；解法3：用另一个数组B来记录A中元素出现的次数，例如B[i]表示A中元素值为i出现的次数；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="求一维无序数组的主元素">
+<meta property="og:url" content="https://github.com/neodeng/2015/02/03/求一维无序数组的主元素/">
+<meta property="og:site_name" content="我们的目标是星辰大海">
+<meta property="og:description" content="问题：对于一维无序数组A[N]，若存在元素A[i]出现的次数超过N/2，则称A[i]为数组A的主元素。给出算法求出数组A是否存在主元素，并给出主元素。解法：解法1：暴力搜索，时间复杂度为O(N2);解法2：采用随机搜索；解法3：用另一个数组B来记录A中元素出现的次数，例如B[i]表示A中元素值为i出现的次数；">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="求一维无序数组的主元素">
+<meta name="twitter:description" content="问题：对于一维无序数组A[N]，若存在元素A[i]出现的次数超过N/2，则称A[i]为数组A的主元素。给出算法求出数组A是否存在主元素，并给出主元素。解法：解法1：暴力搜索，时间复杂度为O(N2);解法2：采用随机搜索；解法3：用另一个数组B来记录A中元素出现的次数，例如B[i]表示A中元素值为i出现的次数；">
+
+  
+    <link rel="alternative" href="/atom.xml" title="我们的目标是星辰大海" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="/dyq.jpg">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Neo Deng</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">相爱	不如相知</p>
+		
+
+		
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+		
+
+		<div class="switch-area">
+			<section class="first-part">
+				<nav class="header-menu">
+					<ul>
+					
+						<li><a href="/">主页</a></li>
+			        
+						<li><a href="/archives">所有文章</a></li>
+			        
+						<li><a href="/tags/随笔">随笔</a></li>
+			        
+					</ul>
+				</nav>
+				<nav class="header-nav">
+					<div class="social">
+						
+							<a class="github" target="_blank" href="https://github.com/neodeng" title="github">github</a>
+				        
+							<a class="weibo" target="_blank" href="http://weibo.com/u/5323510820" title="weibo">weibo</a>
+				        
+							<a class="google" target="_blank" href="https://plus.google.com/u/0/107158690205371195391" title="google">google</a>
+				        
+					</div>
+				</nav>
+			</section>
+			
+			
+			<section class="second-part">
+				<div class="widget tagcloud">
+					<a href="/tags/system/" style="font-size: 10.00px;">system</a><a href="/tags/web/" style="font-size: 10.00px;">web</a><a href="/tags/算法/" style="font-size: 20.00px;">算法</a><a href="/tags/随笔/" style="font-size: 10.00px;">随笔</a>
+				</div>
+			</section>
+			
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/dyq.jpg">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">Neo Deng</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">相爱	不如相知</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/neodeng" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5323510820" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/u/0/107158690205371195391" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-求一维无序数组的主元素" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/02/03/求一维无序数组的主元素/" class="article-date">
+  	<time datetime="2015-02-03T12:59:04.000Z" itemprop="datePublished">Feb 3 2015</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      求一维无序数组的主元素
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><b>问题：</b>对于一维无序数组A[N]，若存在元素A[i]出现的次数超过N/2，则称A[i]为数组A的主元素。给出算法求出数组A是否存在主元素，并给出主元素。<br><b>解法：</b><br><b>解法1：</b>暴力搜索，时间复杂度为O(N<sup>2</sup>);<br><b>解法2：</b>采用随机搜索；<br><b>解法3：</b>用另一个数组B来记录A中元素出现的次数，例如B[i]表示A中元素值为i出现的次数；<br><a id="more"></a><br><b>解法4：</b>先用快速排序将A排列为有序数组，然后将中位数作为候选元，若主元素存在，则一定为中位数；<br><b>解法5：</b>采用分治的思想，递归求解；<br><b>解法6：</b>对于A中的元素两两比较，若相同则作为候选元计入新的数组B，最终B的主元素一定也是A的主元素，这样不断递归求解，时间复杂度为O(N),T(N)=T(N/2)+O(N);<br><b>解法7：</b>经典算法，其思想是，若A中的两个元素A[i]不等于A[j]，则不论它们是否是原数组的主元素，删除这两个元素后对原数组的主元素不产生影响，即原数组的主元素在删除掉A[i]、A[j]后仍是剩下数组的主元素。<br><b>code:</b></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Find the major element of an array A[N] */</span></div><div class="line"></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> "stdio.h"</span></div><div class="line"><span class="preprocessor">#<span class="keyword">include</span> "string.h"</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> getmajorcandidate(<span class="keyword">int</span> A[], <span class="keyword">int</span> len);</div><div class="line"></div><div class="line">main(){</div><div class="line">	<span class="keyword">int</span> A[]={<span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>};</div><div class="line">	<span class="keyword">int</span> N=<span class="keyword">sizeof</span>(A)/<span class="keyword">sizeof</span>(A[<span class="number">0</span>]);</div><div class="line">	<span class="keyword">int</span> i, cnt, candidate;</div><div class="line">	candidate=getmajorcandidate(A, N);</div><div class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;N;i++){</div><div class="line">		<span class="keyword">if</span> (candidate==A[i])</div><div class="line">			cnt++;</div><div class="line">	}</div><div class="line">	<span class="keyword">if</span> (cnt&gt;N/<span class="number">2</span>)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"The major element is: %3d.\n"</span>, candidate);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">printf</span>(<span class="string">"The major element does not exist.\n"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div><div class="line"><span class="comment">/* get the candidate of major element. */</span></div><div class="line"><span class="keyword">int</span> getmajorcandidate(<span class="keyword">int</span> A[], <span class="keyword">int</span> len){</div><div class="line">	<span class="keyword">int</span> majorcandidate, i, count=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;len;i++){</div><div class="line">		<span class="keyword">if</span> (count==<span class="number">0</span>){</div><div class="line">			majorcandidate=A[i];</div><div class="line">			count++;}</div><div class="line">		<span class="keyword">else</span>{ </div><div class="line">			<span class="keyword">if</span> (A[i]==majorcandidate)</div><div class="line">				count++;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				count--;</div><div class="line">		}</div><div class="line">	}</div><div class="line">	<span class="keyword">return</span> majorcandidate;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/01/27/埃氏与欧氏素数筛法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">埃氏与欧氏素数筛法</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="求一维无序数组的主元素" data-title="求一维无序数组的主元素" data-url="https://github.com/neodeng/2015/02/03/求一维无序数组的主元素/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"neodeng"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-right">
+    		&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> </br>
+		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+    	</div>
+      <!--	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div> -->
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
